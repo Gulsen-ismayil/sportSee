@@ -1,0 +1,13 @@
+html,body {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+}
+
+#root,.App {
+  height: 100%;
+}
+
+.navVerti-container {
+  display: flex;
+  height: 100%;
+}

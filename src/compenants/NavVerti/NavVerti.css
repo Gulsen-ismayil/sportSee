@@ -1,0 +1,13 @@
+.navVerti{
+  background-color: black;
+  color: white;
+  width: 70px;
+  text-align: center;
+}
+
+.navVertiText {
+  writing-mode: vertical-rl;
+  /* text-orientation: mixed; */
+  transform: rotate(180deg);
+  font-size: 13px;
+}

@@ -4,6 +4,9 @@ import UserName from "./compenants/UserName/UserName";
 import AverageSessions from "./compenants/AverageSessions/AverageSessions";
 import DailyActivity from "./compenants/DailyActivity/DailyActivity";
 import Performance from "./compenants/Performance/Performance";
+import NavHori from "./compenants/NavHori/NavHori";
+import NavVerti from "./compenants/NavVerti/NavVerti";
+import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -41,10 +44,16 @@ function App() {
 
   return (
     <div className="App">
-      <UserName user={user} />
-      <DailyActivity activity={activity} />
-      <AverageSessions averageActi={averageActi} />
-      <Performance performance={performance} />
+      <NavHori />
+      <div className="navVerti-container">
+        <NavVerti />
+        <div className="container">
+          <UserName user={user} />
+          <DailyActivity activity={activity} />
+          <AverageSessions averageActi={averageActi} />
+          <Performance performance={performance} />
+        </div>
+      </div>
     </div>
   );
 }
