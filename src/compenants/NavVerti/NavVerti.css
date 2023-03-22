@@ -5,9 +5,31 @@
   text-align: center;
 }
 
+.icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+}
+
+.icons .icon {
+  border-radius: 5px;
+  margin: 20px 0;
+  background-color: white;
+  color: red;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .navVertiText {
   writing-mode: vertical-rl;
   /* text-orientation: mixed; */
   transform: rotate(180deg);
   font-size: 13px;
+  display: flex;
+  justify-content: center;
 }
