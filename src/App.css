@@ -11,3 +11,7 @@ html,body {
   display: flex;
   height: 100%;
 }
+
+.container {
+  padding: 50px;
+}

@@ -1,7 +1,7 @@
 .navVerti{
   background-color: black;
   color: white;
-  width: 70px;
+  width: 120px;
   text-align: center;
 }
 
@@ -15,21 +15,20 @@
 
 .icons .icon {
   border-radius: 5px;
-  margin: 20px 0;
+  margin: 15px 0;
   background-color: white;
   color: red;
-  width: 35px;
-  height: 35px;
+  width: 55px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 25px;
 }
 
 .navVertiText {
   writing-mode: vertical-rl;
-  /* text-orientation: mixed; */
   transform: rotate(180deg);
   font-size: 13px;
-  display: flex;
-  justify-content: center;
+  margin: auto;
 }
