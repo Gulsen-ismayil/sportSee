@@ -6,6 +6,8 @@ import DailyActivity from "./compenants/DailyActivity/DailyActivity";
 import Performance from "./compenants/Performance/Performance";
 import NavHori from "./compenants/NavHori/NavHori";
 import NavVerti from "./compenants/NavVerti/NavVerti";
+import Score from "./compenants/Score/Score";
+import Result from "./compenants/Result/Result";
 import "./App.css";
 
 function App() {
@@ -47,11 +49,28 @@ function App() {
       <NavHori />
       <div className="navVerti-container">
         <NavVerti />
-        <div className="container">
-          <UserName user={user} />
-          <DailyActivity activity={activity} />
-          <AverageSessions averageActi={averageActi} />
-          <Performance performance={performance} />
+        <div className="appContainer">
+          {user ?  <UserName user={user} />
+          : ''}
+         
+          <div className="graphicAll-loss">
+              <div className="graphicAll">
+                {activity ?  <DailyActivity activity={activity} />
+                : ''}
+                  <div className="graphicRectagle">
+                    {averageActi ? <AverageSessions averageActi={averageActi} />
+                    : ' '}
+                      {performance ? <Performance performance={performance} />
+                      : ''}
+                      {user ? <Score user={user}/>
+                      : ''}
+                      
+                  </div>
+              </div>
+              {user ? <Result user={user} />
+              : ''}
+              
+          </div>
         </div>
       </div>
     </div>

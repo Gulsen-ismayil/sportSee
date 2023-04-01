@@ -12,6 +12,20 @@ html,body {
   height: 100%;
 }
 
-.container {
+.appContainer {
   padding: 50px;
+  /* display: flex; */
+}
+
+.graphicAll-loss {
+  display: flex;
+  justify-content: space-between;
+}
+
+.graphicRectagle {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+  width: 800px;
+  /* height: 500px; */
 }
