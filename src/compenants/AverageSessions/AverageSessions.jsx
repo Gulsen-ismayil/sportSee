@@ -11,9 +11,9 @@ function AverageSessions({averageActi}) {
   return (
     <div className='averageSessionContainer'>
        <p className='averageSessionTitle'>Durée moyenne des <br/>sessions</p>
-       <LineChart className='averageSessionLineChart' width={250} height={250} data={averageActi?.data?.sessions} >
+       <LineChart className='averageSessionLineChart' width={320} height={240} data={averageActi?.data?.sessions} >
        <CartesianGrid strokeDasharray="3 3" horizontal={false} vertical={false}/>
-       <XAxis dataKey="day" axisLine={false} tickLine={false} tickFormatter={formatXAxisTick} stroke='rgb(241, 156, 156)'fontSize={13} tickSize={10}/>
+       <XAxis dataKey="day" axisLine={false} tickLine={false} tickFormatter={formatXAxisTick} stroke='rgb(241, 156, 156)'fontSize={13} tickSize={10} />
        <Tooltip />
        <Line type="monotone" dataKey="sessionLength" stroke="#fff" strokeWidth={1}/>
        </LineChart>

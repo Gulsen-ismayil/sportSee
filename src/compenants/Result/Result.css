@@ -7,9 +7,30 @@
 
 .resultElement {
     display: flex;
-
-    width: 150px;
+    justify-content: space-around;
+    width: 170px;
     height: 80px;
     border-radius: 10px;
     background-color: rgb(248, 248, 245);
+    align-items: center;
+}
+
+.resultIcon {
+    background-color: pink;
+    color: red;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.resultText h4,.resultText p{
+    margin: 0;
+}
+
+.resultText p {
+    font-size: 13px;
+    color: rgb(111, 110, 110);
 }

@@ -48,30 +48,21 @@ function App() {
     <div className="App">
       <NavHori />
       <div className="navVerti-container">
-        <NavVerti />
-        <div className="appContainer">
-          {user ?  <UserName user={user} />
-          : ''}
-         
-          <div className="graphicAll-loss">
-              <div className="graphicAll">
-                {activity ?  <DailyActivity activity={activity} />
-                : ''}
-                  <div className="graphicRectagle">
-                    {averageActi ? <AverageSessions averageActi={averageActi} />
-                    : ' '}
-                      {performance ? <Performance performance={performance} />
-                      : ''}
-                      {user ? <Score user={user}/>
-                      : ''}
-                      
+          <NavVerti />
+          <div className="appContainer">
+              {user ?  <UserName user={user} /> : ''}
+              <div className="graphicAll-result">
+                  <div className="graphicAll">
+                      {activity ?  <DailyActivity activity={activity} /> : ''}
+                      <div className="graphicRectagle">
+                          {averageActi ? <AverageSessions averageActi={averageActi} /> : ' '}
+                          {performance ? <Performance performance={performance} /> : ''}
+                          {user ? <Score user={user}/> : ''}
+                      </div>
                   </div>
+                  {user ? <Result user={user} /> : ''}               
               </div>
-              {user ? <Result user={user} />
-              : ''}
-              
           </div>
-        </div>
       </div>
     </div>
   );

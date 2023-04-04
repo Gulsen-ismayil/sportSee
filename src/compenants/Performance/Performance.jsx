@@ -2,15 +2,15 @@ import {RadarChart,PolarGrid,PolarAngleAxis,Radar} from'recharts'
 import './Performance.css'
 
 function Performance({performance}) {
-const subject = Object.values(performance?.data?.kind)
-const subjectKind = subject.map((sub,index) => ({sub,id:index}))
-console.log(subjectKind)
+  const newData = performance.data.data.map(item => {
+    return {kind: performance.data.kind[item.kind], value:item.value}
+  })
+
   return (
-    // <div></div>
-      <RadarChart className='performanceContainer'  outerRadius={90} width={230} height={250} data={performance?.data?.data}>
+      <RadarChart className='performanceContainer' outerRadius={90} width={320} height={320} data={newData}>
       <PolarGrid />
-      <PolarAngleAxis data={subjectKind} dataKey='sub' />
-      <Radar name="ggg" dataKey="value" stroke="red" fill="red" fillOpacity={0.6} />
+      <PolarAngleAxis dataKey='kind' style={{fontSize:'13px'}}/>
+      <Radar dataKey="value" stroke="red" fill="red" fillOpacity={0.6} />
       </RadarChart>
   )
 }

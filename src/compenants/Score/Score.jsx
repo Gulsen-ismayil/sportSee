@@ -9,25 +9,21 @@ function Score({user}) {
     ]
    
     const COLORS = ['red', 'rgb(248, 248, 245)']
-console.log(newData[0].value)
     return (
         <div className='scoreContainer'>
             <p>Score</p>
-            <div style={{position:'relative',width:'300px',height:'200px'}} >
-                <div style={{position:'absolute', top:'50%', left:'40%', transform:'translate(-50%, -50%'}} >
-                    <p style={{textAlign:'center', fontSize:'16px', fontWeight:'bold'}} >{user.data.todayScore*100}% de votre<br/> objectif</p>
+            <div style={{position:'relative',width:'300px',height:'300px'}} >
+                <div style={{position:'absolute', zIndex:'100',top:'40%', left:'49%', transform:'translate(-50%, -50%'}} >
+                    <p style={{textAlign:'center', fontSize:'15px', fontWeight:'bold'}} >{user.data.todayScore*100}%</p>
+                    <p style={{textAlign:'center',fontSize:'12px',color:'grey'}}>de votre<br/> objectif</p>
                 </div>
-                <PieChart width={300} height={200}>
-                {/* <defs>
-                    <clipPath id="clip">
-                    <rect x="0" y="0" width="100%" height="100%" rx="83" ry="83" />
-                    </clipPath>
-                </defs> */}
+                <PieChart width={300} height={300}>
                 <Pie 
                 data={newData}
-                cx={120}
-                innerRadius={70} 
-                outerRadius={83} 
+                cx={150}
+                cy={110}
+                innerRadius={90} 
+                outerRadius={103} 
                 dataKey='value'
                 startAngle={90}
                 endAngle={-270}
@@ -37,26 +33,19 @@ console.log(newData[0].value)
                 strokeLinecap='round'
                 cornerRadius={10}
                 stroke="transparent"
-                // clipPath='url(#clip)'
                 >
-                    {/* <circle cx={120} cy={100} r={70} fill='#fff'/> */}
-                        {newData.map((entry,index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
+                    {newData.map((entry,index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
                 </Pie>
-                {/* <Pie
+                <Pie
                     data={newData}
-                    cx={120}
-                    outerRadius={70}
+                    cx={150}
+                    cy={110}
+                    outerRadius={90}
                     fill='white'
                     dataKey='value'
-                    shape={(props) => {
-                    const { cx, cy, innerRadius} = props;
-                    return (
-                        <circle cx={cx} cy={cy} r={innerRadius} fill='white' />
-                    );
-                    }}
-                /> */}
+                />
                 </PieChart>
             </div>
         </div>
