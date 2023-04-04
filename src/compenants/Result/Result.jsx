@@ -8,7 +8,7 @@ function Result({user}) {
     return (
         <div className="resultContainer">
             <div className="resultElement">
-                <div className='resultIcon'>
+                <div className='resultIcon' style={{backgroundColor:'#F6E1E1',color:'#FF0000'}}>
                     <FontAwesomeIcon icon={faDumbbell} />
                 </div>
                 <div className="resultText">
@@ -17,7 +17,7 @@ function Result({user}) {
                 </div>
             </div>
             <div className="resultElement">
-                <div className='resultIcon'>
+                <div className='resultIcon' style={{backgroundColor:'#D2E7F5',color:'#4AB8FF'}} >
                     <FontAwesomeIcon icon={faDumbbell} />
                 </div>
                 <div className="resultText">
@@ -26,7 +26,7 @@ function Result({user}) {
                 </div>
             </div>
             <div className="resultElement">
-                <div className='resultIcon'>
+                <div className='resultIcon' style={{backgroundColor:'#F7F2DD',color:'#FDCC0C'}}>
                     <FontAwesomeIcon icon={faAppleWhole} />
                 </div>
                 <div className="resultText">
@@ -35,7 +35,7 @@ function Result({user}) {
                 </div>
             </div>
             <div className="resultElement">
-                <div className='resultIcon'>
+                <div className='resultIcon' style={{backgroundColor:'#F1D4DC',color:'#FD5181'}}>
                     <FontAwesomeIcon icon={faBurger} />
                 </div>
                 <div className="resultText">

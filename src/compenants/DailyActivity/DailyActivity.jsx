@@ -23,7 +23,7 @@ function DailyActivity({activity}) {
 
   function CustomLegendItem({ value, color }) {
     return (
-      <div style={{ display: 'flex', alignItems: 'center', marginLeft: '10px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginLeft: '50px' }}>
         <div style={{ width: '10px', height: '10px', backgroundColor: color, marginRight: '5px', borderRadius: '50%' }}></div>
         <CustomLegend value={value} />
       </div>
@@ -33,7 +33,7 @@ function DailyActivity({activity}) {
   return (
     <div className='dailyActivity'>
       <p className='dailyActivityText' >Activité quotidienne</p>
-        <BarChart width={630} height={200} data={activity?.data?.sessions} style={{marginLeft:'20px', position:'relative'}}>
+        <BarChart width={950} height={250} data={activity?.data?.sessions} style={{marginLeft:'20px', position:'relative'}}>
         <CartesianGrid strokeDasharray= "3 3" vertical={false} />
         <XAxis dataKey="day" tickFormatter={dateTick} tickLine={false}/>
         <YAxis orientation="right" tickLine={false} axisLine={false}/>
@@ -49,7 +49,7 @@ function DailyActivity({activity}) {
                     content={(props) => {
                       const { payload } = props;
                       return (
-                        <div style={{ display: 'flex' }}>
+                        <div style={{ display: 'flex' ,marginLeft:'350px'}}>
                           {
                             payload.map((entry, index) => (
                               <CustomLegendItem key={`item-${index}`} value={entry.value} color={entry.color} />
