@@ -7,7 +7,7 @@ function Performance({performance}) {
   })
 
   return (
-      <RadarChart className='performanceContainer' outerRadius={90} width={320} height={320} data={newData}>
+      <RadarChart className='performanceContainer' outerRadius={90} width={300} height={300} data={newData}>
       <PolarGrid />
       <PolarAngleAxis dataKey='kind' style={{fontSize:'13px'}}/>
       <Radar dataKey="value" stroke="red" fill="red" fillOpacity={0.6} />

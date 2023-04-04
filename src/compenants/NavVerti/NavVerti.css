@@ -26,6 +26,16 @@
   font-size: 30px;
 }
 
+#iconYoga{
+  display: flex;
+  flex-direction: column;
+}
+
+#iconSwimming {
+  display: flex;
+  flex-direction: column;
+}
+
 .navVertiText {
   writing-mode: vertical-rl;
   transform: rotate(180deg);

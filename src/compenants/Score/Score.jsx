@@ -20,7 +20,7 @@ function Score({user}) {
                 <PieChart width={300} height={300}>
                 <Pie 
                 data={newData}
-                cx={150}
+                cx={145}
                 cy={110}
                 innerRadius={90} 
                 outerRadius={103} 
@@ -40,7 +40,7 @@ function Score({user}) {
                 </Pie>
                 <Pie
                     data={newData}
-                    cx={150}
+                    cx={145}
                     cy={110}
                     outerRadius={90}
                     fill='white'

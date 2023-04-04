@@ -1,5 +1,7 @@
 import {FontAwesomeIcon} from'@fortawesome/react-fontawesome'
-import {faDumbbell,faAppleWhole,faBurger} from'@fortawesome/free-solid-svg-icons'
+import {faAppleWhole,faBurger} from'@fortawesome/free-solid-svg-icons'
+import calorie from'../../asset/calorie.png'
+import proteine from'../../asset/proteine.png'
 
 import './Result.css'
 
@@ -9,7 +11,7 @@ function Result({user}) {
         <div className="resultContainer">
             <div className="resultElement">
                 <div className='resultIcon' style={{backgroundColor:'#F6E1E1',color:'#FF0000'}}>
-                    <FontAwesomeIcon icon={faDumbbell} />
+                    <img src={calorie} alt="calorie" />
                 </div>
                 <div className="resultText">
                     <h4>{user.data.keyData.calorieCount}kcal</h4>
@@ -18,7 +20,7 @@ function Result({user}) {
             </div>
             <div className="resultElement">
                 <div className='resultIcon' style={{backgroundColor:'#D2E7F5',color:'#4AB8FF'}} >
-                    <FontAwesomeIcon icon={faDumbbell} />
+                    <img src={proteine} alt="proteine" />
                 </div>
                 <div className="resultText">
                     <h4>{user.data.keyData.proteinCount}g</h4>

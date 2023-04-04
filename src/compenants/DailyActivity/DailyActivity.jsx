@@ -33,11 +33,10 @@ function DailyActivity({activity}) {
   return (
     <div className='dailyActivity'>
       <p className='dailyActivityText' >Activité quotidienne</p>
-        <BarChart width={950} height={250} data={activity?.data?.sessions} style={{marginLeft:'20px', position:'relative'}}>
+        <BarChart width={950} height={250} data={activity?.data?.sessions} style={{marginLeft:'50px', position:'relative'}}>
         <CartesianGrid strokeDasharray= "3 3" vertical={false} />
         <XAxis dataKey="day" tickFormatter={dateTick} tickLine={false}/>
         <YAxis orientation="right" tickLine={false} axisLine={false}/>
-        {/* <Tooltip/> */}
         <Legend iconType='circle' 
                 iconSize={10} 
                 wrapperStyle={{
