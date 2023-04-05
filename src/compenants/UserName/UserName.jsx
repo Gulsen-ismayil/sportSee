@@ -1,15 +1,15 @@
 import './UserName.css'
 
 function UserName ({user}) {
-  console.log(user)
+
   return (
     <div className="userName">
-      <h1>Bonjour {' '}
-          <span style={{color:'red'}}>
-            {user?.data?.userInfos?.firstName}
-          </span>
-      </h1>
-      <p>Félicitation ! Vous avez explosé vos objectifs hier 👏 </p>
+        <h1>Bonjour {' '}
+            <span style={{color:'red'}}>
+                {user?.data?.userInfos?.firstName}
+            </span>
+        </h1>
+        <p>Félicitation ! Vous avez explosé vos objectifs hier 👏 </p>
     </div>
   )
 }
