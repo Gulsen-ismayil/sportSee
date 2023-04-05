@@ -2,11 +2,10 @@ import {FontAwesomeIcon} from'@fortawesome/react-fontawesome'
 import {faAppleWhole,faBurger} from'@fortawesome/free-solid-svg-icons'
 import calorie from'../../asset/calorie.png'
 import proteine from'../../asset/proteine.png'
-
 import './Result.css'
 
 function Result({user}) {
-    console.log(user.data.keyData)
+
     return (
         <div className="resultContainer">
             <div className="resultElement">

@@ -1,4 +1,3 @@
-// import { ResponsiveContainer,RadialBarChart, RadialBar} from 'recharts'
 import { PieChart,Pie,Cell } from 'recharts'
 import './Score.css'
 
@@ -7,7 +6,7 @@ function Score({user}) {
         {value: 12},
         {value: 88}
     ]
-   
+   console.log(user)
     const COLORS = ['red', 'rgb(248, 248, 245)']
     return (
         <div className='scoreContainer'>
