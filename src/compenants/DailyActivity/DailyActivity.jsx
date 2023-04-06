@@ -34,22 +34,22 @@ function DailyActivity({activity}) {
   return (
     <div className='dailyActivity'>
       <p className='dailyActivityText' >Activité quotidienne</p>
-        <BarChart width={950} height={250} data={activity?.data?.sessions} style={{marginLeft:'50px', position:'relative'}}>
+        <BarChart width={650} height={140} data={activity?.data?.sessions} style={{marginLeft:'30px', position:'relative'}}>
             <CartesianGrid strokeDasharray= "3 3" vertical={false} />
             <XAxis dataKey="day" tickFormatter={dateTick} tickLine={false}/>
             <YAxis orientation="right" tickLine={false} axisLine={false}/>
             <Legend iconType='circle' 
-                    iconSize={10} 
+                    iconSize={5} 
                     wrapperStyle={{
-                        fontSize:'12px', 
+                        fontSize:'5px', 
                         position:'absolute', 
-                        top:'-30px', 
+                        top:'-40px', 
                         left: '230px'}}
                         formatter={CustomLegend}
                         content={(props) => {
                           const { payload } = props;
                           return (
-                            <div style={{ display: 'flex' ,marginLeft:'350px'}}>
+                            <div style={{ display: 'flex' ,marginLeft:'10px'}}>
                               {
                                 payload.map((entry, index) => (
                                   <CustomLegendItem key={`item-${index}`} value={entry.value} color={entry.color} />

@@ -1,7 +1,8 @@
 import {FontAwesomeIcon} from'@fortawesome/react-fontawesome'
-import {faAppleWhole,faBurger} from'@fortawesome/free-solid-svg-icons'
+import {faAppleWhole} from'@fortawesome/free-solid-svg-icons'
 import calorie from'../../asset/calorie.png'
 import proteine from'../../asset/proteine.png'
+import burger from'../../asset/burger.png'
 import './Result.css'
 
 function Result({user}) {
@@ -37,7 +38,7 @@ function Result({user}) {
             </div>
             <div className="resultElement">
                 <div className='resultIcon' style={{backgroundColor:'#F1D4DC',color:'#FD5181'}}>
-                    <FontAwesomeIcon icon={faBurger} />
+                    <img src={burger} alt="burger" />
                 </div>
                 <div className="resultText">
                     <h4>{user.data.keyData.lipidCount}g</h4>

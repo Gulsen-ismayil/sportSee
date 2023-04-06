@@ -12,19 +12,19 @@ function Score({user}) {
 
     return (
         <div className='scoreContainer'>
-            <p>Score</p>
-            <div style={{position:'relative',width:'300px',height:'300px'}} >
-                <div style={{position:'absolute', zIndex:'100',top:'40%', left:'49%', transform:'translate(-50%, -50%'}} >
+            <p id='score'>Score</p>
+            <div style={{position:'relative',width:'200px',height:'200px'}} >
+                <div style={{position:'absolute', zIndex:'100',top:'35%', left:'55%', transform:'translate(-50%, -50%'}} >
                     <p style={{textAlign:'center', fontSize:'15px', fontWeight:'bold'}} >{user.data.todayScore*100}%</p>
-                    <p style={{textAlign:'center',fontSize:'12px',color:'grey'}}>de votre<br/> objectif</p>
+                    <p style={{textAlign:'center',fontSize:'12px',color:'grey',margin:'0'}}>de votre<br/> objectif</p>
                 </div>
-                <PieChart width={300} height={300}>
+                <PieChart width={220} height={170}>
                     <Pie 
                         data={newData}
-                        cx={145}
-                        cy={110}
-                        innerRadius={90} 
-                        outerRadius={103} 
+                        cx={105}
+                        cy={65}
+                        innerRadius={60} 
+                        outerRadius={70} 
                         dataKey='value'
                         startAngle={90}
                         endAngle={-270}
@@ -41,9 +41,9 @@ function Score({user}) {
                     </Pie>
                     <Pie
                         data={newData}
-                        cx={145}
-                        cy={110}
-                        outerRadius={90}
+                        cx={105}
+                        cy={65}
+                        outerRadius={60}
                         fill='white'
                         dataKey='value'
                     />

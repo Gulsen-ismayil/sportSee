@@ -8,9 +8,9 @@ function Performance({performance}) {
   })
 
   return (
-      <RadarChart className='performanceContainer' outerRadius={90} width={300} height={300} data={newData}>
+      <RadarChart className='performanceContainer' outerRadius={70} width={220} height={220} data={newData}>
           <PolarGrid />
-          <PolarAngleAxis dataKey='kind' style={{fontSize:'13px'}}/>
+          <PolarAngleAxis dataKey='kind' style={{fontSize:'9px'}}/>
           <Radar dataKey="value" stroke="red" fill="red" fillOpacity={0.6} />
       </RadarChart>
   )
