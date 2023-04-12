@@ -1,21 +1,22 @@
+import PropTypes from'prop-types'
 import { PieChart,Pie,Cell } from 'recharts'
 import './Score.css'
 
-function Score({user}) {
+function Score({todayScore}) {
     // create new data that has the same format as the example in Rechars
     const newData = [
-        {value: user.data.todayScore*100},
-        {value: 100-user.data.todayScore*100}
+        {value: todayScore*100},
+        {value: 100-todayScore*100}
     ]
 
     const COLORS = ['red', 'rgb(248, 248, 245)']
 
     return (
-        <div className='scoreContainer'>
+        <div className='scoreContainer' >
             <p id='score'>Score</p>
             <div style={{position:'relative',width:'200px',height:'200px'}} >
                 <div style={{position:'absolute', zIndex:'100',top:'35%', left:'55%', transform:'translate(-50%, -50%'}} >
-                    <p style={{textAlign:'center', fontSize:'15px', fontWeight:'bold'}} >{user.data.todayScore*100}%</p>
+                    <p id='error-message-userScore' style={{textAlign:'center', fontSize:'15px', fontWeight:'bold'}} >{todayScore*100}%</p>
                     <p style={{textAlign:'center',fontSize:'12px',color:'grey',margin:'0'}}>de votre<br/> objectif</p>
                 </div>
                 <PieChart width={220} height={170}>
@@ -51,6 +52,10 @@ function Score({user}) {
             </div>
         </div>
     )
+}
+
+Score.propTypes = {
+    todayScore: PropTypes.number
 }
 
 export default Score
