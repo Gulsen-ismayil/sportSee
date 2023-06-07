@@ -1,5 +1,4 @@
-import {  useState } from "react";
-// import axios from "axios";
+import { useState,useEffect } from "react";
 import UserName from "./Compenents/UserName/UserName";
 import AverageSessions from "./Compenents/AverageSessions/AverageSessions";
 import DailyActivity from "./Compenents/DailyActivity/DailyActivity";
@@ -17,37 +16,31 @@ function App() {
   const [averageActi, setAverageActi] = useState(null);
   const [activity, setActivity] = useState(null);
   const [performance, setPerformance] = useState(null);
-  const [error,setError] = useState(false)
-  const [data,setData] = useState(null)
+  // const [error, setError] = useState(null);
 
-// console.log(data)
-  const handleDataFetched = (key,fetchedData) => {
-      switch(key) {
-        case 'user':
-          setUser(fetchedData)
-          break
-        case 'averageActi':
-          setAverageActi(fetchedData)
-          break
-        case 'activity':
-          setActivity(fetchedData)
-          break
-        case 'performance':
-          setPerformance(fetchedData)
-          break
-        default:
-          break
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userResponse = await ServiceApi.getUser();
+        const averageActiResponse = await ServiceApi.getAverageActi();
+        const activityResponse = await ServiceApi.getActivity();
+        const performanceResponse = await ServiceApi.getPerformance();
+
+        setUser(userResponse);
+        setAverageActi(averageActiResponse);
+        setActivity(activityResponse);
+        setPerformance(performanceResponse);
+      } catch (error) {
+        console.error("Une erreur s'est produite lors de la récupération des données :", error);
+        // setError("Une erreur s'est produite lors de la récupération des données.")
       }
-  }
+    };
 
-  const handleApiError = (key, errorMessage) => {
-    setError({key, message: errorMessage})
-  }
-console.log(user)
+    fetchData();
+  }, []);
 
   return (
     <div className="App">
-      {/* <ServiceApi onDataFetched={handleDataFetched} error={handleApiError}/> */}
             <NavHori />
             <div className="navVerti-container">
                 <NavVerti />

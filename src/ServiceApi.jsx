@@ -1,46 +1,50 @@
 import axios from "axios";
-import { useEffect} from "react";
 
-
-function ServiceApi({ error,onDataFetched }) {
-
-    useEffect(() => {
-      axios
-        .get("http://localhost:3000/user/12")
-        .then((response) => {onDataFetched('user', response.data)})
-        // .catch(error => {
-        //             console.error(error)
-        //             setError('user', error.message)
-        // });
-        .catch(error)
-    
-      axios
-        .get("http://localhost:3000/user/12/average-sessions")
-        .then((response) => {onDataFetched('averageActi', response.data)})
-        .catch(error => {
-                    console.error(error)
-                    // setError('averageActi', error.message)
-         });
-    
-      axios
-        .get("http://localhost:3000/user/12/activity")
-        .then((response) => {onDataFetched('activity', response.data)})
-        .catch(error => {
-                    console.error(error)
-                    // setError('activity', error.message)
-        });
-    
-      axios
-        .get("http://localhost:3000/user/12/performance")
-        .then((response) => {onDataFetched('performance', response.data)})
-        .catch(error => {
-                    console.error(error)
-                    // setError('performance', error.message)
-        });
-    }, []);
-
-    
-    return null
+async function getUser() {
+  try {
+    const response = await axios.get("http://localhost:3000/user/12");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw new Error("Une erreur s'est produite lors de la récupération des données utilisateur.");
+  }
 }
 
-export default ServiceApi
+async function getAverageActi() {
+  try {
+    const response = await axios.get("http://localhost:3000/user/12/average-sessions");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching averageActi data:", error);
+    throw new Error("Une erreur s'est produite lors de la récupération des données d'activité moyenne.");
+  }
+}
+
+async function getActivity() {
+  try {
+    const response = await axios.get("http://localhost:3000/user/12/activity");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching activity data:", error);
+    throw new Error("Une erreur s'est produite lors de la récupération des données d'activité.");
+  }
+}
+
+async function getPerformance() {
+  try {
+    const response = await axios.get("http://localhost:3000/user/12/performance");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching performance data:", error);
+    throw new Error("Une erreur s'est produite lors de la récupération des données de performance.");
+  }
+}
+
+const ServiceApi = {
+  getUser,
+  getAverageActi,
+  getActivity,
+  getPerformance,
+};
+
+export default ServiceApi;
