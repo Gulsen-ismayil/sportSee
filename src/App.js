@@ -9,7 +9,10 @@ import Score from "./Compenents/Score/Score";
 import Result from "./Compenents/Result/Result";
 import "./App.css";
 import ServiceApi from "./ServiceApi";
-// import MockDataApi from "./MockServiceApi";
+import User from'./Entites/User'
+import UserActivity from'./Entites/UserActivity'
+import UserAverageSessions from'./Entites/UserAverageSessions'
+import UserPerformance from'./Entites/UserPerformance'
 
 function App() {
 
@@ -17,24 +20,28 @@ function App() {
   const [averageActi, setAverageActi] = useState(null);
   const [activity, setActivity] = useState(null);
   const [performance, setPerformance] = useState(null);
-  // const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
+    const userId = extractUserIdFromUrl()
+
       try {
-        const userId = extractUserIdFromUrl()
         const userResponse = await ServiceApi.getUser(userId);
         const averageActiResponse = await ServiceApi.getAverageActi(userId);
         const activityResponse = await ServiceApi.getActivity(userId);
         const performanceResponse = await ServiceApi.getPerformance(userId);
 
-        setUser(userResponse);
-        setAverageActi(averageActiResponse);
-        setActivity(activityResponse);
-        setPerformance(performanceResponse);
+        const formattedUserResponse = new User(userResponse)
+        const formattedUserActivityResponse = new UserActivity(activityResponse)
+        const formattedUserAverageSessionsResponse = new UserAverageSessions(averageActiResponse)
+        const formattedUserPerformanceResponse = new UserPerformance(performanceResponse)
+
+        setUser(formattedUserResponse);
+        setAverageActi(formattedUserActivityResponse);
+        setActivity(formattedUserAverageSessionsResponse);
+        setPerformance(formattedUserPerformanceResponse);
       } catch (error) {
         console.error("Une erreur s'est produite lors de la récupération des données :", error);
-        // setError("Une erreur s'est produite lors de la récupération des données.")
       }
     };
 
@@ -50,23 +57,24 @@ function App() {
   
   }
 
+
   return (
     <div className="App">
             <NavHori />
             <div className="navVerti-container">
                 <NavVerti />
                 <div className="appContainer">
-                    {user ?  <UserName firstName={user.data.userInfos.firstName} /> : ''}
+                    {user ?  <UserName firstName={user.userInfos.firstName} /> : ''}
                     <div className="graphicAll-result">
                         <div className="graphicAll">
-                            {activity ?  <DailyActivity sessions={activity.data.sessions} /> : ''}
+                            {activity ?  <DailyActivity sessions={activity.sessions} /> : ''}
                             <div className="graphicRectagle">
-                                {averageActi ? <AverageSessions sessions={averageActi.data.sessions} /> : ' '}
-                                {performance ? <Performance performance={performance.data} /> : ''}
-                                {user ? <Score todayScore={user.data.todayScore}/> : ''}
+                                {averageActi ? <AverageSessions sessions={averageActi.sessions} /> : ' '}
+                                {performance ? <Performance performance={performance} /> : ''}
+                                {user ? <Score todayScore={user.todayScore}/> : ''}
                             </div>
                         </div>
-                        {user ? <Result keyData={user.data.keyData} /> : ''}               
+                        {user ? <Result keyData={user.keyData} /> : ''}               
                     </div>
                 </div>
             </div>
