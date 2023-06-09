@@ -9,6 +9,7 @@ import Score from "./Compenents/Score/Score";
 import Result from "./Compenents/Result/Result";
 import "./App.css";
 import ServiceApi from "./ServiceApi";
+// import MockDataApi from "./MockServiceApi";
 
 function App() {
 
