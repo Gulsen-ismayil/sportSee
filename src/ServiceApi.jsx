@@ -1,8 +1,8 @@
 import axios from "axios";
 
-async function getUser() {
+async function getUser(userId) {
   try {
-    const response = await axios.get("http://localhost:3000/user/12");
+    const response = await axios.get(`http://localhost:3000/user/${userId}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching user data:", error);
@@ -10,9 +10,9 @@ async function getUser() {
   }
 }
 
-async function getAverageActi() {
+async function getAverageActi(userId) {
   try {
-    const response = await axios.get("http://localhost:3000/user/12/average-sessions");
+    const response = await axios.get(`http://localhost:3000/user/${userId}/average-sessions`);
     return response.data;
   } catch (error) {
     console.error("Error fetching averageActi data:", error);
@@ -20,9 +20,9 @@ async function getAverageActi() {
   }
 }
 
-async function getActivity() {
+async function getActivity(userId) {
   try {
-    const response = await axios.get("http://localhost:3000/user/12/activity");
+    const response = await axios.get(`http://localhost:3000/user/${userId}/activity`);
     return response.data;
   } catch (error) {
     console.error("Error fetching activity data:", error);
@@ -30,9 +30,9 @@ async function getActivity() {
   }
 }
 
-async function getPerformance() {
+async function getPerformance(userId) {
   try {
-    const response = await axios.get("http://localhost:3000/user/12/performance");
+    const response = await axios.get(`http://localhost:3000/user/${userId}/performance`);
     return response.data;
   } catch (error) {
     console.error("Error fetching performance data:", error);

@@ -21,10 +21,11 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userResponse = await ServiceApi.getUser();
-        const averageActiResponse = await ServiceApi.getAverageActi();
-        const activityResponse = await ServiceApi.getActivity();
-        const performanceResponse = await ServiceApi.getPerformance();
+        const userId = extractUserIdFromUrl()
+        const userResponse = await ServiceApi.getUser(userId);
+        const averageActiResponse = await ServiceApi.getAverageActi(userId);
+        const activityResponse = await ServiceApi.getActivity(userId);
+        const performanceResponse = await ServiceApi.getPerformance(userId);
 
         setUser(userResponse);
         setAverageActi(averageActiResponse);
@@ -38,6 +39,15 @@ function App() {
 
     fetchData();
   }, []);
+
+  const extractUserIdFromUrl = () => {
+    const url = window.location.href
+    const urlParts = url.split('/')
+    const idIndex = urlParts.findIndex(part => part === 'user') + 1
+    const userId = urlParts[idIndex]
+    return userId
+  
+  }
 
   return (
     <div className="App">
