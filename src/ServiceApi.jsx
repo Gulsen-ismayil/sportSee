@@ -6,7 +6,7 @@ const useMockData = true
 
 async function getUser(userId) {
   if(useMockData) {
-    const user = USER_MAIN_DATA.find((user) => user.id == userId)
+    const user = USER_MAIN_DATA.find((user) => user.id === userId)
     return Promise.resolve(user)
   }else {
     try {
@@ -20,7 +20,7 @@ async function getUser(userId) {
 }
 async function getAverageSessions(userId) {
   if(useMockData) {
-    const userSessions = USER_AVERAGE_SESSIONS.find((user) => user.userId == userId)
+    const userSessions = USER_AVERAGE_SESSIONS.find((user) => user.userId === userId)
     console.log(userSessions);
     return Promise.resolve(userSessions)
   }else {
@@ -36,7 +36,7 @@ async function getAverageSessions(userId) {
 
 async function getActivity(userId) {
   if(useMockData) {
-    const userActivity = USER_ACTIVITY.find((user) => user.userId == userId)
+    const userActivity = USER_ACTIVITY.find((user) => user.userId === userId)
     return Promise.resolve(userActivity)
   }else {
     try {
@@ -51,7 +51,7 @@ async function getActivity(userId) {
 
 async function getPerformance(userId) {
   if(useMockData) {
-    const userPerformance = USER_PERFORMANCE.find((user) => user.userId == userId)
+    const userPerformance = USER_PERFORMANCE.find((user) => user.userId === userId)
     return Promise.resolve(userPerformance)
   }else {
     try {

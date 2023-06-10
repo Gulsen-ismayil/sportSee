@@ -52,7 +52,8 @@ function App() {
     const url = window.location.href
     const urlParts = url.split('/')
     const idIndex = urlParts.findIndex(part => part === 'user') + 1
-    const userId = urlParts[idIndex]
+    const userId = parseInt(urlParts[idIndex])
+  
     return userId
   
   }
