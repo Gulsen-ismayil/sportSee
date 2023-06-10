@@ -17,7 +17,7 @@ import UserPerformance from'./Entites/UserPerformance'
 function App() {
 
   const [user, setUser] = useState(null);
-  const [averageActi, setAverageActi] = useState(null);
+  const [averageSessions, setAverageSessions] = useState(null);
   const [activity, setActivity] = useState(null);
   const [performance, setPerformance] = useState(null);
 
@@ -27,18 +27,18 @@ function App() {
 
       try {
         const userResponse = await ServiceApi.getUser(userId);
-        const averageActiResponse = await ServiceApi.getAverageActi(userId);
+        const averageSessionsResponse = await ServiceApi.getAverageSessions(userId);
         const activityResponse = await ServiceApi.getActivity(userId);
         const performanceResponse = await ServiceApi.getPerformance(userId);
 
         const formattedUserResponse = new User(userResponse)
         const formattedUserActivityResponse = new UserActivity(activityResponse)
-        const formattedUserAverageSessionsResponse = new UserAverageSessions(averageActiResponse)
+        const formattedUserAverageSessionsResponse = new UserAverageSessions(averageSessionsResponse)
         const formattedUserPerformanceResponse = new UserPerformance(performanceResponse)
 
         setUser(formattedUserResponse);
-        setAverageActi(formattedUserActivityResponse);
-        setActivity(formattedUserAverageSessionsResponse);
+        setAverageSessions(formattedUserAverageSessionsResponse);
+        setActivity(formattedUserActivityResponse);
         setPerformance(formattedUserPerformanceResponse);
       } catch (error) {
         console.error("Une erreur s'est produite lors de la récupération des données :", error);
@@ -69,7 +69,7 @@ function App() {
                         <div className="graphicAll">
                             {activity ?  <DailyActivity sessions={activity.sessions} /> : ''}
                             <div className="graphicRectagle">
-                                {averageActi ? <AverageSessions sessions={averageActi.sessions} /> : ' '}
+                                {averageSessions ? <AverageSessions sessions={averageSessions.sessions} /> : ' '}
                                 {performance ? <Performance performance={performance} /> : ''}
                                 {user ? <Score todayScore={user.todayScore}/> : ''}
                             </div>

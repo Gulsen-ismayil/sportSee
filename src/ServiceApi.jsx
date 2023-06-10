@@ -2,7 +2,7 @@ import axios from "axios";
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE} from './data'
 
 
-const useMockData = false
+const useMockData = true
 
 async function getUser(userId) {
   if(useMockData) {
@@ -11,7 +11,6 @@ async function getUser(userId) {
   }else {
     try {
       const response = await axios.get(`http://localhost:3000/user/${userId}`);
-
       return response.data.data;
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -19,9 +18,10 @@ async function getUser(userId) {
     }
   }
 }
-async function getAverageActi(userId) {
+async function getAverageSessions(userId) {
   if(useMockData) {
     const userSessions = USER_AVERAGE_SESSIONS.find((user) => user.userId == userId)
+    console.log(userSessions);
     return Promise.resolve(userSessions)
   }else {
     try {
@@ -66,7 +66,7 @@ async function getPerformance(userId) {
 
 const ServiceApi = {
   getUser,
-  getAverageActi,
+  getAverageSessions,
   getActivity,
   getPerformance,
 };

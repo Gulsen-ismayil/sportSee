@@ -59,12 +59,13 @@ function DailyActivity({sessions}) {
   }
 
   return (
+    
     <div className='dailyActivity' id='error-message-dailyActivity'>
       <p className='dailyActivityText' >Activité quotidienne</p>
-        <BarChart width={650} height={140} data={sessions} style={{marginLeft:'30px', position:'relative'}}>
-            <CartesianGrid strokeDasharray= "3 3" vertical={false} />
-            <XAxis dataKey="day" tickFormatter={dateTick} tickLine={false}/>
-            <YAxis orientation="right" tickLine={false} axisLine={false}/>
+        <BarChart width={650} height={140} data={sessions} style={{marginLeft:'30px', position:'relative'}}> 
+        <CartesianGrid strokeDasharray= "3 3" vertical={false} />
+        <XAxis dataKey="day" tickFormatter={dateTick} tickLine={false}/>
+        <YAxis orientation="right" tickLine={false} axisLine={false}/>
             <Legend iconType='circle' 
                     iconSize={5} 
                     wrapperStyle={{
@@ -97,7 +98,7 @@ function DailyActivity({sessions}) {
 DailyActivity.propTypes = {
   sessions: PropTypes.arrayOf(
     PropTypes.shape({
-      day:PropTypes.string,
+      day:PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
       kilogram:PropTypes.number,
       calories:PropTypes.number
     })

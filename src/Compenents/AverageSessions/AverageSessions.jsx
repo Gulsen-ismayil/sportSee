@@ -9,6 +9,7 @@ function AverageSessions({sessions}) {
   function formatXAxisTick(value) {
     return dayAbbreviations[value-1]
   }
+  console.log(sessions);
 
   return (
     <div className='averageSessionContainer' id='error-message-averageActivity' >
@@ -26,7 +27,7 @@ function AverageSessions({sessions}) {
 AverageSessions.propTypes = {
   sessions: PropTypes.arrayOf(
     PropTypes.shape({
-      day:PropTypes.number,
+      day:PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
       sessionLength: PropTypes.number
     })
   )

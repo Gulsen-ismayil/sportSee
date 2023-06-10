@@ -2,6 +2,10 @@ class UserPerformance {
     constructor({userId,kind,data}){
         this.userId = userId 
         this.kind = kind
+        // this.data = data.map((item) => ({
+        //     value:item.value,
+        //     kind:item.kind,
+        // }))
         this.data = data
     }
 }
