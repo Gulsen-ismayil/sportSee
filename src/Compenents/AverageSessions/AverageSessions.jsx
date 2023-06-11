@@ -9,7 +9,6 @@ function AverageSessions({sessions}) {
   function formatXAxisTick(value) {
     return dayAbbreviations[value-1]
   }
-  console.log(sessions);
 
   return (
     <div className='averageSessionContainer' id='error-message-averageActivity' >

@@ -2,13 +2,9 @@ import PropTypes from'prop-types'
 import { PieChart,Pie,Cell } from 'recharts'
 import './Score.css'
 
-function Score({todayScore}) {
-    // create new data that has the same format as the example in Rechars
-    const newData = [
-        {value: todayScore*100},
-        {value: 100-todayScore*100}
-    ]
+function Score({todayScore,newData}) {
 
+console.log(newData);
     const COLORS = ['red', 'rgb(248, 248, 245)']
 
     return (

@@ -2,11 +2,7 @@ import PropTypes from'prop-types'
 import {RadarChart,PolarGrid,PolarAngleAxis,Radar} from'recharts'
 import './Performance.css'
 
-function Performance({performance}) {
-  // create new data that has the same format as the example in Rechars
-  const newData = performance.data.map(item => {
-    return {kind: performance.kind[item.kind], value:item.value}
-  })
+function Performance({performance,newData}) {
 
   return (
     <div>

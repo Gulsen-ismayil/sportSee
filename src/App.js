@@ -20,6 +20,8 @@ function App() {
   const [averageSessions, setAverageSessions] = useState(null);
   const [activity, setActivity] = useState(null);
   const [performance, setPerformance] = useState(null);
+  const [newDataScore, setNewDataScore] = useState(null)
+  const [newDataPerformance, setNewDataPerformance] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +42,21 @@ function App() {
         setAverageSessions(formattedUserAverageSessionsResponse);
         setActivity(formattedUserActivityResponse);
         setPerformance(formattedUserPerformanceResponse);
+
+          // create new data that has the same format as the example in Rechars
+        const newDataScore = [
+        {value: formattedUserResponse.todayScore*100},
+        {value: 100-formattedUserResponse.todayScore*100}
+        ]
+        setNewDataScore(newDataScore)
+
+          // create new data that has the same format as the example in Rechars
+        const newDataPerformance = formattedUserPerformanceResponse.data.map(item => {
+        return {kind: formattedUserPerformanceResponse.kind[item.kind], value:item.value}
+        })
+        setNewDataPerformance(newDataPerformance)
+
+
       } catch (error) {
         console.error("Une erreur s'est produite lors de la récupération des données :", error);
       }
@@ -71,8 +88,8 @@ function App() {
                             {activity ?  <DailyActivity sessions={activity.sessions} /> : ''}
                             <div className="graphicRectagle">
                                 {averageSessions ? <AverageSessions sessions={averageSessions.sessions} /> : ' '}
-                                {performance ? <Performance performance={performance} /> : ''}
-                                {user ? <Score todayScore={user.todayScore}/> : ''}
+                                {performance ? <Performance performance={performance} newData={newDataPerformance}/> : ''}
+                                {user ? <Score todayScore={user.todayScore} newData={newDataScore}/> : ''}
                             </div>
                         </div>
                         {user ? <Result keyData={user.keyData} /> : ''}               
