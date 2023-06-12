@@ -2,7 +2,7 @@ import PropTypes from'prop-types'
 import {RadarChart,PolarGrid,PolarAngleAxis,Radar} from'recharts'
 import './Performance.css'
 
-function Performance({performance,newData}) {
+function Performance({newData}) {
 
   return (
     <div>

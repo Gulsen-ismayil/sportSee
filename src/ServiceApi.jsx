@@ -2,7 +2,7 @@ import axios from "axios";
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE} from './data'
 
 
-const useMockData = true
+const useMockData = false
 
 async function getUser(userId) {
   if(useMockData) {

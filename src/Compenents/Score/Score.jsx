@@ -3,8 +3,6 @@ import { PieChart,Pie,Cell } from 'recharts'
 import './Score.css'
 
 function Score({todayScore,newData}) {
-
-console.log(newData);
     const COLORS = ['red', 'rgb(248, 248, 245)']
 
     return (

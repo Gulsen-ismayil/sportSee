@@ -21,6 +21,7 @@ function App() {
   const [activity, setActivity] = useState(null);
   const [performance, setPerformance] = useState(null);
   const [newDataScore, setNewDataScore] = useState(null)
+  const [newDataAverageSessions, setNewDataAverageSessions] = useState(null)
   const [newDataPerformance, setNewDataPerformance] = useState(null)
 
   useEffect(() => {
@@ -32,7 +33,7 @@ function App() {
         const averageSessionsResponse = await ServiceApi.getAverageSessions(userId);
         const activityResponse = await ServiceApi.getActivity(userId);
         const performanceResponse = await ServiceApi.getPerformance(userId);
-
+        console.log(userResponse);
         const formattedUserResponse = new User(userResponse)
         const formattedUserActivityResponse = new UserActivity(activityResponse)
         const formattedUserAverageSessionsResponse = new UserAverageSessions(averageSessionsResponse)
@@ -43,19 +44,17 @@ function App() {
         setActivity(formattedUserActivityResponse);
         setPerformance(formattedUserPerformanceResponse);
 
-          // create new data that has the same format as the example in Rechars
-        const newDataScore = [
-        {value: formattedUserResponse.todayScore*100},
-        {value: 100-formattedUserResponse.todayScore*100}
-        ]
-        setNewDataScore(newDataScore)
+        const formattedNewDataScore = User.getNewDataScore(formattedUserResponse.todayScore)
+        setNewDataScore(formattedNewDataScore)
+
+        const formattedNewDataAverageSessions = UserAverageSessions.formatXAxisTick
+        setNewDataAverageSessions(formattedNewDataAverageSessions)
 
           // create new data that has the same format as the example in Rechars
         const newDataPerformance = formattedUserPerformanceResponse.data.map(item => {
         return {kind: formattedUserPerformanceResponse.kind[item.kind], value:item.value}
         })
         setNewDataPerformance(newDataPerformance)
-
 
       } catch (error) {
         console.error("Une erreur s'est produite lors de la récupération des données :", error);
@@ -65,14 +64,13 @@ function App() {
     fetchData();
   }, []);
 
+
   const extractUserIdFromUrl = () => {
     const url = window.location.href
     const urlParts = url.split('/')
     const idIndex = urlParts.findIndex(part => part === 'user') + 1
     const userId = parseInt(urlParts[idIndex])
-  
     return userId
-  
   }
 
 
@@ -85,10 +83,10 @@ function App() {
                     {user ?  <UserName firstName={user.userInfos.firstName} /> : ''}
                     <div className="graphicAll-result">
                         <div className="graphicAll">
-                            {activity ?  <DailyActivity sessions={activity.sessions} /> : ''}
+                            {activity ?  <DailyActivity activity={activity}/> : ''}
                             <div className="graphicRectagle">
-                                {averageSessions ? <AverageSessions sessions={averageSessions.sessions} /> : ' '}
-                                {performance ? <Performance performance={performance} newData={newDataPerformance}/> : ''}
+                                {averageSessions ? <AverageSessions sessions={averageSessions.sessions} formattedXAxisTick={newDataAverageSessions} /> : ' '}
+                                {performance ? <Performance newData={newDataPerformance}/> : ''}
                                 {user ? <Score todayScore={user.todayScore} newData={newDataScore}/> : ''}
                             </div>
                         </div>

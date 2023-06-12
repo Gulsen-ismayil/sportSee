@@ -7,10 +7,6 @@ import './DailyActivity.css'
  * @param {string} tick - the tick value representing the data 
  * @returns {number} - the day of the date
  */
-const dateTick = (tick) => {
-    const date = new Date(tick)
-    return date.getDate()
-}
 
 /**
  * @component
@@ -21,50 +17,36 @@ const dateTick = (tick) => {
  * @returns - rendered dailyActivity component
  */
 
-function DailyActivity({sessions}) {
-
 /**
  * 
  * @param {string} value - the value of the legend 
  * @returns - rendered customLegend component 
  */
-  function CustomLegend({ value }) {
-      let content;
-      if (value === 'kilogram') {
-        content = 'Poids (kg)';
-      } else if (value === 'calories') {
-        content = 'Calories brûlées (kCal)';
-      }
-      return <span style={{ fontSize: '12px' }}>{content}</span>;
-  }
 
 /**
  * @param {string} value - the value of the legend item
  * @param {string} color - the color of the legend item
  * @returns -rendered cunstomLegendItem component 
  */
-  function CustomLegendItem({ value,color}) {
-    return (
-      <div style={{ display: 'flex', alignItems: 'center', marginLeft: '50px' }}>
-        <div style={{ width: '10px', height: '10px',backgroundColor: color, marginRight: '5px', borderRadius: '50%' }}></div>
-        <CustomLegend value={value} />
-      </div>
-    );
-  }
 
-  // PropTypes for CustomLegendItem component 
-  CustomLegendItem.propTypes = {
-    value: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired
-  }
+function CustomLegendItem({ activity,entry}) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '50px' }}>
+      <div style={{ width: '10px', height: '10px',backgroundColor: entry.color, marginRight: '5px', borderRadius: '50%' }}></div>
+      {activity.CustomLegend(entry.value)}
+    </div>
+  );
+}
+
+function DailyActivity({activity}) {
 
   return (
     
     <div className='dailyActivity' id='error-message-dailyActivity'>
       <p className='dailyActivityText' >Activité quotidienne</p>
-        <BarChart width={650} height={140} data={sessions} style={{marginLeft:'30px', position:'relative'}}> 
+        <BarChart width={650} height={140} data={activity.sessions} style={{marginLeft:'30px', position:'relative'}}> 
         <CartesianGrid strokeDasharray= "3 3" vertical={false} />
-        <XAxis dataKey="day" tickFormatter={dateTick} tickLine={false}/>
+        <XAxis dataKey="day" tickFormatter={activity.dateTick} tickLine={false}/>
         <YAxis orientation="right" tickLine={false} axisLine={false}/>
             <Legend iconType='circle' 
                     iconSize={5} 
@@ -73,14 +55,14 @@ function DailyActivity({sessions}) {
                         position:'absolute', 
                         top:'-40px', 
                         left: '230px'}}
-                        formatter={CustomLegend}
+                        formatter={activity.CustomLegend}
                         content={(props) => {
                           const { payload } = props;
                           return (
                             <div style={{ display: 'flex' ,marginLeft:'10px'}}>
                               {
                                 payload.map((entry, index) => (
-                                  <CustomLegendItem key={`item-${index}`} value={entry.value} color={entry.color} />
+                                  <CustomLegendItem key={`item-${index}`} activity={activity} entry={entry} />
                                 ))
                               }
                             </div>
@@ -103,6 +85,7 @@ DailyActivity.propTypes = {
       calories:PropTypes.number
     })
   )
+  // activity: UserActivity
 }
 
 
