@@ -21,7 +21,7 @@ function App() {
   const [activity, setActivity] = useState(null);
   const [performance, setPerformance] = useState(null);
   const [newDataScore, setNewDataScore] = useState(null)
-  const [newDataAverageSessions, setNewDataAverageSessions] = useState(null)
+  // const [newDataAverageSessions, setNewDataAverageSessions] = useState(null)
   const [newDataPerformance, setNewDataPerformance] = useState(null)
 
   useEffect(() => {
@@ -33,7 +33,6 @@ function App() {
         const averageSessionsResponse = await ServiceApi.getAverageSessions(userId);
         const activityResponse = await ServiceApi.getActivity(userId);
         const performanceResponse = await ServiceApi.getPerformance(userId);
-        console.log(userResponse);
         const formattedUserResponse = new User(userResponse)
         const formattedUserActivityResponse = new UserActivity(activityResponse)
         const formattedUserAverageSessionsResponse = new UserAverageSessions(averageSessionsResponse)
@@ -47,8 +46,8 @@ function App() {
         const formattedNewDataScore = User.getNewDataScore(formattedUserResponse.todayScore)
         setNewDataScore(formattedNewDataScore)
 
-        const formattedNewDataAverageSessions = UserAverageSessions.formatXAxisTick
-        setNewDataAverageSessions(formattedNewDataAverageSessions)
+        // const formattedNewDataAverageSessions = UserAverageSessions.formatXAxisTick
+        // setNewDataAverageSessions(formattedNewDataAverageSessions)
 
           // create new data that has the same format as the example in Rechars
         const newDataPerformance = formattedUserPerformanceResponse.data.map(item => {
@@ -85,7 +84,7 @@ function App() {
                         <div className="graphicAll">
                             {activity ?  <DailyActivity activity={activity}/> : ''}
                             <div className="graphicRectagle">
-                                {averageSessions ? <AverageSessions sessions={averageSessions.sessions} formattedXAxisTick={newDataAverageSessions} /> : ' '}
+                                {averageSessions ? <AverageSessions averageSessions = {averageSessions} /> : ' '}
                                 {performance ? <Performance newData={newDataPerformance}/> : ''}
                                 {user ? <Score todayScore={user.todayScore} newData={newDataScore}/> : ''}
                             </div>
