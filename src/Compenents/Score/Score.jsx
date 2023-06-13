@@ -2,7 +2,7 @@ import PropTypes from'prop-types'
 import { PieChart,Pie,Cell } from 'recharts'
 import './Score.css'
 
-function Score({todayScore,newData}) {
+function Score({user,newData}) {
     const COLORS = ['red', 'rgb(248, 248, 245)']
 
     return (
@@ -10,7 +10,7 @@ function Score({todayScore,newData}) {
             <p id='score'>Score</p>
             <div style={{position:'relative',width:'200px',height:'200px'}} >
                 <div style={{position:'absolute', zIndex:'100',top:'35%', left:'55%', transform:'translate(-50%, -50%'}} >
-                    <p id='error-message-userScore' style={{textAlign:'center', fontSize:'15px', fontWeight:'bold'}} >{todayScore*100}%</p>
+                    <p id='error-message-userScore' style={{textAlign:'center', fontSize:'15px', fontWeight:'bold'}} >{user.todayScore*100}%</p>
                     <p style={{textAlign:'center',fontSize:'12px',color:'grey',margin:'0'}}>de votre<br/> objectif</p>
                 </div>
                 <PieChart width={220} height={170}>

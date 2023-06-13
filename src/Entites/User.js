@@ -6,7 +6,7 @@ class User {
         this.keyData = keyData
     }
 
-    static getNewDataScore(todayScore) {
+    getNewDataScore(todayScore) {
         return [
             { value: todayScore * 100 },
             { value: 100 - todayScore * 100 }

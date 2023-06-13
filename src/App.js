@@ -20,7 +20,6 @@ function App() {
   const [averageSessions, setAverageSessions] = useState(null);
   const [activity, setActivity] = useState(null);
   const [performance, setPerformance] = useState(null);
-  const [newDataScore, setNewDataScore] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,9 +39,6 @@ function App() {
         setAverageSessions(formattedUserAverageSessionsResponse);
         setActivity(formattedUserActivityResponse);
         setPerformance(formattedUserPerformanceResponse);
-
-        const formattedNewDataScore = User.getNewDataScore(formattedUserResponse.todayScore)
-        setNewDataScore(formattedNewDataScore)
 
       } catch (error) {
         console.error("Une erreur s'est produite lors de la récupération des données :", error);
@@ -75,7 +71,7 @@ function App() {
                             <div className="graphicRectagle">
                                 {averageSessions ? <AverageSessions averageSessions = {averageSessions} /> : ' '}
                                 {performance ? <Performance performance={performance}/> : ''}
-                                {user ? <Score todayScore={user.todayScore} newData={newDataScore}/> : ''}
+                                {user ? <Score user={user} newData={user.getNewDataScore(user.todayScore)}/> : ''}
                             </div>
                         </div>
                         {user ? <Result keyData={user.keyData} /> : ''}               
