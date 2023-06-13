@@ -7,12 +7,12 @@ import NavHori from "./Compenents/NavHori/NavHori";
 import NavVerti from "./Compenents/NavVerti/NavVerti";
 import Score from "./Compenents/Score/Score";
 import Result from "./Compenents/Result/Result";
-import "./App.css";
 import ServiceApi from "./ServiceApi";
 import User from'./Entites/User'
 import UserActivity from'./Entites/UserActivity'
 import UserAverageSessions from'./Entites/UserAverageSessions'
 import UserPerformance from'./Entites/UserPerformance'
+import "./App.css";
 
 function App() {
 
@@ -21,8 +21,6 @@ function App() {
   const [activity, setActivity] = useState(null);
   const [performance, setPerformance] = useState(null);
   const [newDataScore, setNewDataScore] = useState(null)
-  // const [newDataAverageSessions, setNewDataAverageSessions] = useState(null)
-  const [newDataPerformance, setNewDataPerformance] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,15 +43,6 @@ function App() {
 
         const formattedNewDataScore = User.getNewDataScore(formattedUserResponse.todayScore)
         setNewDataScore(formattedNewDataScore)
-
-        // const formattedNewDataAverageSessions = UserAverageSessions.formatXAxisTick
-        // setNewDataAverageSessions(formattedNewDataAverageSessions)
-
-          // create new data that has the same format as the example in Rechars
-        const newDataPerformance = formattedUserPerformanceResponse.data.map(item => {
-        return {kind: formattedUserPerformanceResponse.kind[item.kind], value:item.value}
-        })
-        setNewDataPerformance(newDataPerformance)
 
       } catch (error) {
         console.error("Une erreur s'est produite lors de la récupération des données :", error);
@@ -85,7 +74,7 @@ function App() {
                             {activity ?  <DailyActivity activity={activity}/> : ''}
                             <div className="graphicRectagle">
                                 {averageSessions ? <AverageSessions averageSessions = {averageSessions} /> : ' '}
-                                {performance ? <Performance newData={newDataPerformance}/> : ''}
+                                {performance ? <Performance performance={performance}/> : ''}
                                 {user ? <Score todayScore={user.todayScore} newData={newDataScore}/> : ''}
                             </div>
                         </div>

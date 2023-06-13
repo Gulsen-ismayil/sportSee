@@ -2,11 +2,11 @@ import PropTypes from'prop-types'
 import {RadarChart,PolarGrid,PolarAngleAxis,Radar} from'recharts'
 import './Performance.css'
 
-function Performance({newData}) {
+function Performance({performance}) {
 
   return (
     <div>
-      <RadarChart className='performanceContainer' outerRadius={70} width={220} height={220} data={newData}>
+      <RadarChart className='performanceContainer' outerRadius={70} width={220} height={220} data={performance.newData(performance)}>
           <PolarGrid />
           <PolarAngleAxis dataKey='kind' style={{fontSize:'9px'}}/>
           <Radar dataKey="value" stroke="red" fill="red" fillOpacity={0.6} />
